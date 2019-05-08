@@ -9,7 +9,10 @@ export default class Bolsa extends Component{
      }
     render(){
         return(
-        <TableBolsa/>
+         <div className='content'>
+             <h2>Bolsas</h2>
+            <TableBolsa/>
+         </div>   
         )
     }
     

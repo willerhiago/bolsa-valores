@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import Table from 'react-bootstrap/Table'
-import '../css/Bolsa.css'
 
 export default class TableBolsa extends Component{
     constructor(props) {
@@ -29,21 +28,21 @@ export default class TableBolsa extends Component{
 
      render(){
         return(
-        <div className="teste">
+        <div>
             <Table striped bordered hover>
-                    <thead>
-                        <tr>
-                        <th>Código</th>
-                        <th>Nome</th>
-                        <th>Atividade</th>
-                        <th>Ação</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {this.renderRows()}
-                    </tbody>
-                    </Table>;
-            </div>
+                <thead>
+                    <tr>
+                    <th>Código</th>
+                    <th>Nome</th>
+                    <th>Atividade</th>
+                    <th>Ação</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {this.renderRows()}
+                </tbody>
+            </Table>;
+        </div>
         )
     }
     

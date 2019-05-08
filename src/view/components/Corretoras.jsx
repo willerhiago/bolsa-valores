@@ -11,7 +11,10 @@ export default class Corretoras extends Component{
 
     render(){
         return(
-            <TableCorretora/>
+            <div className='content'>
+                <h2>Corretoras</h2>
+                <TableCorretora/>
+            </div>
         )
     }
 }

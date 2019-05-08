@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import Table from 'react-bootstrap/Table'
-import '../css/Bolsa.css'
 
 export default class TableCorretora extends Component{
     constructor(props) {
