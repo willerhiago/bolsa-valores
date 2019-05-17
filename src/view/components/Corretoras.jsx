@@ -12,7 +12,7 @@ export default class Corretoras extends Component{
     render(){
         return(
             <div className='content'>
-                <h2>Corretoras</h2>
+                <h2 className="label"><i class="fa fa-suitcase"></i>  Corretoras</h2>
                 <TableCorretora/>
             </div>
         )

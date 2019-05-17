@@ -1,26 +1,18 @@
 import React, {Component} from 'react'
 import Table from 'react-bootstrap/Table'
 
-export default class TableBolsa extends Component{
+export default class TableCorretora extends Component{
     constructor(props) {
         super(props)
-        this.state = { data:[
-            {
-                "id": "1",
-                "name":"Teste",
-                "description": "blablabla"
-            }
-        ]}
+        this.state = { data:[]}
      }
 
      renderRows(){
-        return this.state.data.map(bolsa=>(
-                <tr key={bolsa.id}>
-                    <td>{bolsa.id}</td>
-                    <td>{bolsa.name}</td>
-                    <td>{bolsa.description}</td>
+        return this.state.data.map(corretora=>(
+                <tr key={corretora.id}>
+                    <td>{corretora.id}</td>
+                    <td>{corretora.name}</td>
                     <td></td>
-                    
                 </tr>
             )
         )
@@ -34,7 +26,6 @@ export default class TableBolsa extends Component{
                     <tr>
                     <th>Código</th>
                     <th>Nome</th>
-                    <th>Atividade</th>
                     <th>Ação</th>
                     </tr>
                 </thead>
