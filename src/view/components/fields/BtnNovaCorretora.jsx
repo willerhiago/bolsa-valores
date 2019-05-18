@@ -6,15 +6,15 @@ import InputSelect from "./InputSelect"
 import axios from 'axios'
 import {NotificationManager} from 'react-notifications';
 import './css/Input.css'
-import './css/BtnComprar.css'
+import './css/BtnNovaCorretora.css'
 
-export default class BtnComprar extends React.Component {
+export default class BtnNovaCorretora extends React.Component {
     constructor(props) {
       super(props)
       this.state = { open: false }
       this.openModal = this.openModal.bind(this)
       this.closeModal = this.closeModal.bind(this)
-      this.compra = this.compra.bind(this)
+      this.novaCorretora = this.novaCorretora.bind(this)
       this.changeState = this.changeState.bind(this)
     }
     
@@ -25,11 +25,11 @@ export default class BtnComprar extends React.Component {
       this.setState({ open: false })
     }
 
-    compra() {
-      axios.post("http://localhost:8080/acao/compra?idAcao="+this.props.idAcao+"&idCorretora="+this.state.idCorretora+"&quant="+this.state.quant).then(function(callback){
+    novaCorretora() {
+      axios.post("http://localhost:8080/corretora/?nome="+this.state.nome).then(function(callback){
          this.closeModal()
-         NotificationManager.success('Compra efetuada com sucesso!','',2000)
-         this.props.listAcao()
+         NotificationManager.success('Salvo com sucesso!','',2000)
+         this.props.listCorretora()
       }.bind(this));
       
     }
@@ -42,21 +42,20 @@ export default class BtnComprar extends React.Component {
 
     render() {
       return (
-        <div className="d-inline float-none btnCad">
-        <button type="button" className="btn btn-success" onClick={this.openModal}> <i className="fa fa-money"/>  {this.props.iconContent}</button>
+        <div className="btnCad">
+        <button type="button" className={this.props.classButton} onClick={this.openModal}> <i className={this.props.classIcon}/>  {this.props.iconContent}</button>
           <Popup
             open={this.state.open}
             closeOnDocumentClick
             onClose={this.closeModal}
           >
             <div className="popup">
-                <div className="header"> <h5>Compra</h5> </div>
+                <div className="header"> <h5>Nova Corretora</h5> </div>
                 <div className="form-group content col-xs-4">
-                    <Input type="number" chave="quant" max={this.props.max} description="Quantidade" placeholder={''} changeState={this.changeState}></Input>
-                    <InputSelect type="idCorretora" changeState={this.changeState} description="Corretora"/>
+                    <Input type="text" chave="nome" description="Nome" placeholder={''} changeState={this.changeState}></Input>
                  </div>
                 <div className="actions">
-                    <button type="button" className="btn btn-info left-block buttonAdd" onClick={this.compra}> Confirmar </button>
+                    <button type="button" className="btn btn-info left-block buttonAdd" onClick={this.novaCorretora}> Confirmar </button>
                 </div>
                 <a className="close" onClick={this.closeModal}>
                     &times;

@@ -2,12 +2,13 @@
 import React from 'react'
 import Popup from "reactjs-popup";
 import Input from "./Input"
+import InputSelect from "./InputSelect"
 import axios from 'axios'
 import {NotificationManager} from 'react-notifications';
 import './css/Input.css'
-import './css/BtnCadastrar.css'
+import './css/BtnVenda.css'
 
-export default class BtnCadastrar extends React.Component {
+export default class BtnVenda extends React.Component {
     constructor(props) {
       super(props)
       this.state = { open: false }
@@ -25,17 +26,18 @@ export default class BtnCadastrar extends React.Component {
     }
 
     novaAcao() {
-      axios.post("http://localhost:8080/acao/?nome="+this.state.nome+"&quant="+this.state.quant+"&valor="+this.state.valor+"&description="+this.state.description).then(function(callback){
-         this.closeModal()
-         NotificationManager.success('Ação cadastrada com sucesso','',2000)
+      axios.post("http://localhost:8080/acao/?nome="+this.state.nome+"&quant="+this.state.quant+"&valor="+this.state.valor+"&description="+this.state.description+"&idCorretora="+this.state.idCorretora).then(function(callback){
+        axios.post("http://localhost:8080/acaoCorretora/?idAcao="+callback.data.id+"&idCorretora="+this.state.idCorretora+"&valorVenda="+this.state.valor+"&quant="+callback.data.quant+"&tipo=V")
+        this.closeModal()
+         NotificationManager.success('Venda realizada com sucesso!','',2000)
          this.props.listAcao()
       }.bind(this));
       
     }
 
-    changeState(type,novoNome){
+    changeState(key,novoNome){
       this.setState({
-        [type]: novoNome
+        [key]: novoNome
       })
     }
 
@@ -51,10 +53,11 @@ export default class BtnCadastrar extends React.Component {
             <div className="popup">
                 <div className="header"> <h5>Ação</h5> </div>
                 <div className="form-group content col-xs-4">
-                    <Input type="nome" description="Nome" placeholder={''} changeState={this.changeState}></Input>
-                    <Input type="description" description="Descrição" placeholder={''} changeState={this.changeState}></Input>
-                    <Input type="quant" description="Quantidade" placeholder={''} changeState={this.changeState}></Input>
-                    <Input type="valor" description="Valor" placeholder={''} changeState={this.changeState}></Input>
+                    <Input type="text" chave="nome" description="Nome" placeholder={''} changeState={this.changeState}></Input>
+                    <Input type="text" chave="description" description="Descrição" placeholder={''} changeState={this.changeState}></Input>
+                    <Input type="number" chave="quant" description="Quantidade" placeholder={''} changeState={this.changeState}></Input>
+                    <Input type="number" chave="valor" description="Valor" placeholder={''} changeState={this.changeState}></Input>
+                    <InputSelect type="idCorretora" changeState={this.changeState} description="Corretora"/>
                 </div>
                 <div className="actions">
                     <button type="button" className="btn btn-info left-block buttonAdd" onClick={this.novaAcao}> Confirmar </button>

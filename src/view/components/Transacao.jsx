@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import TableAcao from './TableAcao'
+import TableTransacao from './TableTransacao'
 import '../css/Acao.css'
 
 export default class Transacao extends Component{
@@ -10,8 +10,8 @@ export default class Transacao extends Component{
     render(){
         return(
          <div className='content'>
-             <h2 className="label"><i class="fa fa-bar-chart"></i>  Ações</h2>
-            <TableAcao/>
+             <h2 className="label"><i class="fa fa-exchange"></i>  Transações</h2>
+            <TableTransacao/>
          </div>   
         )
     }

@@ -15,6 +15,7 @@ export default props =>
             <Nav className="mr-auto">
               <Nav.Link href="../corretoras">Corretoras</Nav.Link>
               <Nav.Link href="../acao">Ações</Nav.Link>
+              <Nav.Link href="../transacao">Transações</Nav.Link>
             </Nav>
           </Navbar.Collapse>
     </Navbar>;
