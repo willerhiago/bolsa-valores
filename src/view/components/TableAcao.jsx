@@ -32,7 +32,6 @@ export default class TableAcao extends Component{
      renderRows(){
         return this.state.data.map(acao=>(
                 <tr key={acao.id}>
-                    <td>{acao.id}</td>
                     <td>{acao.nome}</td>
                     <td>{acao.description}</td>
                     <td>{acao.quant}</td>
@@ -52,7 +51,6 @@ export default class TableAcao extends Component{
             <Table striped bordered hover>
                 <thead>
                     <tr>
-                    <th>Código</th>
                     <th>Nome</th>
                     <th>Atividade</th>
                     <th>Quantidade</th>
